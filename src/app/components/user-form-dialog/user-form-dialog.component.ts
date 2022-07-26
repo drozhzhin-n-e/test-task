@@ -43,17 +43,7 @@ export class UserFormDialogComponent {
 
   ngOnInit(): void {
     if (this.mode === 'edit') {
-      this.form.setValue({
-        name: this.user.name,
-        surname: this.user.surname,
-        gender: this.user.gender,
-        personalNumber: this.user.personalNumber,
-        mobile: this.user.mobile,
-        legalAddress: this.user.legalAddress,
-        country: this.user.country,
-        city: this.user.city,
-        address: this.user.address,
-      });
+      this.setInitialUserData();
     }
   }
 
@@ -83,5 +73,19 @@ export class UserFormDialogComponent {
       ...this.form.value
     };
     this.store.dispatch(UserActions.update({ user }));
+  }
+
+  setInitialUserData() {
+    this.form.setValue({
+      name: this.user.name,
+      surname: this.user.surname,
+      gender: this.user.gender,
+      personalNumber: this.user.personalNumber,
+      mobile: this.user.mobile,
+      legalAddress: this.user.legalAddress,
+      country: this.user.country,
+      city: this.user.city,
+      address: this.user.address,
+    });
   }
 }
