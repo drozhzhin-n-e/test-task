@@ -30,7 +30,6 @@ export class AppComponent {
   }
 
   showCreateDialog(): void {
-  	console.log("showCreateDialog()")
     this.store.dispatch(UserActions.showCreateDialog());
   }
 

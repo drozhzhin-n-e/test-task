@@ -43,7 +43,6 @@ export class UserFormDialogComponent {
 
   ngOnInit(): void {
     if (this.mode === 'edit') {
-      console.log("this.user.name", this.user.name)
       this.form.setValue({
         name: this.user.name,
         surname: this.user.surname,
