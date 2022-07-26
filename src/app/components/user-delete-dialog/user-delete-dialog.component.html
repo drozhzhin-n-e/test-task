@@ -1,0 +1,17 @@
+<mat-dialog-content>
+  <p>Вы действительно хотите удалить пользователя?</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button type="button" mat-button mat-dialog-close>
+    Отмена
+  </button>
+  <button
+    type="submit"
+    mat-button
+    color="warn"
+    (click)="remove()"
+    [disabled]="loading$ | async"
+  >
+    Удалить
+  </button>
+</mat-dialog-actions>

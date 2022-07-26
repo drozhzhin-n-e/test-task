@@ -1,0 +1,28 @@
+<mat-card *ngIf="user">
+  <p matLine>Имя: {{ user.name }}</p>
+  <p matLine>Фамилия: {{ user.surname }}</p>
+  <p matLine>Пол: {{ user.gender }}</p>
+  <p matLine>Личный номер: {{ user.personalNumber }}</p>
+  <p matLine>Мобильный: {{ user.mobile }}</p>
+  <p matLine>Юридический адрес: {{ user.legalAddress }}</p>
+  <p matLine>Страна: {{ user.country }}</p>
+  <p matLine>Город: {{ user.city }}</p>
+  <p matLine>Адрес: {{ user.address }}</p>
+
+  <button
+    mat-icon-button
+    aria-label="Edit"
+    (click)="update.emit(user)"
+  >
+    <mat-icon>edit_outlined</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    color="warn"
+    aria-label="Remove"
+    (click)="remove.emit(user.id); $event.stopPropagation()"
+  >
+    <mat-icon>delete_outlined</mat-icon>
+  </button>
+</mat-card>

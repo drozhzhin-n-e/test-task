@@ -1,0 +1,12 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <app-user-list-item
+    *ngFor="let user of vm.users"
+    [user]="user"
+    [loading]="vm.loading"
+    (update)="showEditDialog($event)"
+    (remove)="showRemoveDialog($event)"
+  ></app-user-list-item>
+</ng-container>
+<div class="fab-bottom-right">
+  <button (click)="showCreateDialog()" color="primary" mat-flat-button>Добавить</button>
+</div>

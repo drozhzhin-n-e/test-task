@@ -1,0 +1,88 @@
+<h2 mat-dialog-title *ngIf="mode === 'create'">Добавить пользователя</h2>
+<h2 mat-dialog-title *ngIf="mode === 'edit'">Редактировать пользователя</h2>
+
+<form
+  class="form"
+  [formGroup]="form"
+  (ngSubmit)="form.valid && save()"
+  novalidate
+>
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Имя" maxlength="50"/>
+
+      <mat-error *ngIf="form.get('name')?.hasError('pattern')">
+        Используйте только латинские символы
+      </mat-error>
+      <mat-error *ngIf="form.get('name')?.hasError('minlength')">
+        Минимальная длина имени 3 символа
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="surname" placeholder="Фамилия" maxlength="50" />
+
+      <mat-error *ngIf="form.get('surname')?.hasError('pattern')">
+        Используйте только латинские символы
+      </mat-error>
+      <mat-error *ngIf="form.get('surname')?.hasError('minlength')">
+        Минимальная длина фамилии 3 символа
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-item">
+      <div class="label">Пол</div>
+
+      <mat-radio-group aria-label="Select an option" formControlName="gender">
+        <mat-radio-button value="мужской">Мужской</mat-radio-button>
+        <mat-radio-button value="женский">Женский</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field>
+      <input matInput formControlName="personalNumber" placeholder="Личный номер" />
+
+      <mat-error *ngIf="form.get('personalNumber')?.hasError('minlength') || form.get('personalNumber')?.hasError('maxlength') || form.get('personalNumber')?.hasError('pattern')">
+        Личный номер должен состоять из 11 цифр
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="mobile" placeholder="Мобильный" />
+
+      <mat-error *ngIf="form.get('mobile')?.hasError('minlength') || form.get('mobile')?.hasError('maxlength') || form.get('mobile')?.hasError('pattern')">
+        Мобильный номер должен состоять из 9 цифр
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="legalAddress" placeholder="Юридический адрес" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="country" placeholder="Страна" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="city" placeholder="Город" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="address" placeholder="Адрес" />
+    </mat-form-field>
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button type="button" mat-button mat-dialog-close>
+      Отмена
+    </button>
+    <button
+      type="submit"
+      mat-button
+      color="primary"
+      [disabled]="form.invalid"
+    >
+      Сохранить
+    </button>
+  </mat-dialog-actions>
+</form>
